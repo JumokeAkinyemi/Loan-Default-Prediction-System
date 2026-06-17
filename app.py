@@ -13,7 +13,11 @@ st.set_page_config(
 
 # LOAD MODEL
 
-model = joblib.load("loan_default_model.pkl")
+@st.cache_resource
+def load_model():
+    return joblib.load("loan_default_model.pkl")
+
+model = load_model()
 
 # CUSTOM CSS
 
